@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Unit Test Suite" verbose="1">
+  
+  <test name="Test Validations" preserve-order="true" group-by-instances="true">
+      <classes>      
+   <class name="com.zig_commissions.Tests.loginTest"/>
+   <methods>
+<include name = "login"/>
+</methods>
+      </classes>
+   </test>
+   
+   </suite>
