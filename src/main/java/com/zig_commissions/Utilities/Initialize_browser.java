@@ -32,6 +32,8 @@ public class Initialize_browser  {
 	{
 		
 		
+		System.out.println("Adding a commit in the browser page");
+		
 		System.setProperty("webdriver.chrome.driver", "D://chrome//chromedriver.exe");
 		
 		ChromeOptions chromeOptions = new ChromeOptions();
