@@ -31,7 +31,7 @@ public class Initialize_browser  {
 	public static WebDriver initializeBrowser () throws Exception
 	{
 		
-		System.out.println("Adding a comment");
+		
 		System.setProperty("webdriver.chrome.driver", "D://chrome//chromedriver.exe");
 		
 		ChromeOptions chromeOptions = new ChromeOptions();
