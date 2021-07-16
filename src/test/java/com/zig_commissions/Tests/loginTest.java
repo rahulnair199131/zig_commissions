@@ -15,11 +15,12 @@ public class loginTest extends Initialize_browser{
 	homePage home;
 	
 	@Test
-	public void login()
+	public void login() 
 	{
 		login = new loginPage();
 		home = login.logIn();
 		home.profilemenu();
 		home.clickmenu();
+		home.raiseAttpCommissionsSupport();
 	}
 }

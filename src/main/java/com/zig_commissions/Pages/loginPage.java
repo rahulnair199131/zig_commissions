@@ -1,5 +1,6 @@
 package com.zig_commissions.Pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -30,6 +31,9 @@ WebDriverWait wait = new WebDriverWait(driver,30);
 	public homePage logIn() {
 		try
 		{
+			JavascriptExecutor exe = (JavascriptExecutor) driver;
+			  Integer noOfFrames = Integer.parseInt(exe.executeScript("return window.length").toString());
+			  System.out.println("No. of iframes on the login page are " + noOfFrames);
 		wait.until(ExpectedConditions.visibilityOf((userNameTxt)));
 		userNameTxt.sendKeys("bm169s");
 		passwordTxt.sendKeys("Vijaya$50");

@@ -1,6 +1,9 @@
 package com.zig_commissions.Pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -42,14 +45,34 @@ public class homePage extends Initialize_browser{
 	  @FindBy (xpath = "//span[@class='sap-icon dark-color-sap-icon svelte-1mba5xr']")
 	    public WebElement menuicon;
 		
-		//@FindBy (linkText = "/SalesPortal/#!/workflow")
+		//@FindBy (linkText = "/SalesPortal/#!/workflow") 
 		@FindBy (xpath = "//a[@href ='/SalesPortal/#!/workflow']")
 	    public WebElement workflow;
 		
+		@FindBy (xpath = "//img[@title='Profile']")
+	    public WebElement profileIcon;
+		
+		@FindBy (xpath = "//td[text()='Projects']")
+	    public WebElement projectLabel;
+		
+		
+		
+		@FindBy (id = "newCaseMenuItem")
+	    public WebElement plusIcon;
+		
+		@FindBy (xpath = "//iframe[contains(@ng-src,'/CallidusPortal/')]")
+	    public WebElement frame;
+		
+		@FindBy (id = "new-casedropdown")
+	    public WebElement caseDropdown;
+		
+		@FindBy (xpath = "//a[text()='ATTP Commissions Support']")
+	    public List<WebElement> attpcommissionSupportLink;
 		
 		
 		  public void profilemenu()
 		  { 
+		
 		  Actions action = new Actions(driver);
 		  wait.until(ExpectedConditions.visibilityOf((profileicon)));
 		  profileicon.click(); 
@@ -71,6 +94,9 @@ public class homePage extends Initialize_browser{
 			
 			  public void clickmenu() {
 			  
+				 JavascriptExecutor exe = (JavascriptExecutor) driver;
+				 Integer noOfFrames = Integer.parseInt(exe.executeScript("return window.length").toString());
+			System.out.println("No. of iframes on the menu page are " + noOfFrames);
 			  Actions actions = new Actions(driver);
 			  wait.until(ExpectedConditions.visibilityOf((menuicon)));
 			  wait.until(ExpectedConditions.elementToBeClickable(menuicon));
@@ -79,12 +105,32 @@ public class homePage extends Initialize_browser{
 			  actions.moveToElement(workflow); actions.click().build().perform();
 			  
 			  }
+			  
+			  public void raiseAttpCommissionsSupport()  {
+				  
+				  JavascriptExecutor exe = (JavascriptExecutor) driver;
+				  Integer noOfFrames = Integer.parseInt(exe.executeScript("return window.length").toString());
+				  System.out.println("No. of iframes on the workflow page are " + noOfFrames);
+				  
+				  wait.until(ExpectedConditions.visibilityOf((profileIcon)));
+				  
+				  wait.until(ExpectedConditions.visibilityOf((frame)));
+				  
+				  
+				  driver.switchTo().frame(frame);
+				  
+				  
+				  wait.until(ExpectedConditions.visibilityOf((plusIcon)));
+				  
+				  exe.executeScript("arguments[0].click();", plusIcon);
+				  
+				  wait.until(ExpectedConditions.visibilityOf((caseDropdown)));
+				  
+				  attpcommissionSupportLink.get(0).click();
+				  
+			  }
 			 
 		
-		//public void clickworkflow()
-		//{
-			//wait.until(ExpectedConditions.visibilityOf((workflow)));
-			//workflow.click();
-		//}
+		
 	}
 

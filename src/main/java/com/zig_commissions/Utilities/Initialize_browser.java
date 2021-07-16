@@ -25,12 +25,11 @@ public class Initialize_browser  {
 	
 	public static WebDriver driver = null;
 	public static String url ="https://catt-tst.callidusondemand.com/SalesPortal/#!/";
-	//public static String url ="https://google.com";
+	
 	
 	@BeforeSuite
 	public static WebDriver initializeBrowser () throws Exception
 	{
-		
 		
 		System.out.println("Adding a commit in the browser page from the new workspace");
 		
