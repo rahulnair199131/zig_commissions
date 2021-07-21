@@ -9,11 +9,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.zig_commissions.Utilities.Initialize_browser;
 
-public class loginPage extends Initialize_browser{
+public class LoginPage extends Initialize_browser{
 	
 WebDriverWait wait = new WebDriverWait(driver,30);
 	
-	public loginPage() {
+	public LoginPage() {
       PageFactory.initElements(driver, this); 
 	}
 	
@@ -28,7 +28,7 @@ WebDriverWait wait = new WebDriverWait(driver,30);
     public WebElement signbtn;
 	
 	
-	public homePage logIn() {
+	public HomePage logIn() {
 		try
 		{
 			JavascriptExecutor exe = (JavascriptExecutor) driver;
@@ -38,12 +38,12 @@ WebDriverWait wait = new WebDriverWait(driver,30);
 		userNameTxt.sendKeys("bm169s");
 		passwordTxt.sendKeys("Vijaya$50");
 		signbtn.click(); 
-		return new homePage();
+		return new HomePage();
 		}
 		catch(Exception e)
 		{
 			signbtn.click();
-			return new homePage();
+			return new HomePage();
 
 		}
 		

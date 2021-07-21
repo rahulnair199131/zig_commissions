@@ -12,14 +12,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.zig_commissions.Utilities.Constants;
 import com.zig_commissions.Utilities.Initialize_browser;
 
-public class homePage extends Initialize_browser{
+public class HomePage extends Initialize_browser{
 	
-	WebDriverWait wait = new WebDriverWait(driver,30);
+	WebDriverWait wait = new WebDriverWait(driver,Constants.waitDuration);
 	
 	
-	public homePage() {
+	public HomePage() {
         
         PageFactory.initElements(driver, this);
 	}
@@ -69,6 +70,9 @@ public class homePage extends Initialize_browser{
 		@FindBy (xpath = "//a[text()='ATTP Commissions Support']")
 	    public List<WebElement> attpcommissionSupportLink;
 		
+		@FindBy (xpath = "//a[text()='ATTP Multi CTN Inquiry']")
+	    public List<WebElement> attpmultiCTNLink;
+		
 		
 		  public void profilemenu()
 		  { 
@@ -106,7 +110,8 @@ public class homePage extends Initialize_browser{
 			  
 			  }
 			  
-			  public void raiseAttpCommissionsSupport()  {
+			  
+			  public ATTPMultiCTNInquiryPage raiseAttpCommissionsSupport()  {
 				  
 				  JavascriptExecutor exe = (JavascriptExecutor) driver;
 				  Integer noOfFrames = Integer.parseInt(exe.executeScript("return window.length").toString());
@@ -126,7 +131,9 @@ public class homePage extends Initialize_browser{
 				  
 				  wait.until(ExpectedConditions.visibilityOf((caseDropdown)));
 				  
-				  attpcommissionSupportLink.get(0).click();
+				  attpmultiCTNLink.get(0).click();
+				  
+				  return new ATTPMultiCTNInquiryPage();
 				  
 			  }
 			 
